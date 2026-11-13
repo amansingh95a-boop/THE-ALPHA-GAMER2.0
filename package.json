@@ -1,0 +1,12 @@
+{
+ "name": "the-alpha-gamer",
+ "version": "0.4.1",
+ "private": true,
+ "engines": {
+  "node": ">=22.13"
+ },
+ "scripts": {
+  "start": "node server.js",
+  "test": "node test.js && node test2.js && node test3.js && node test4.js && node test5.js"
+ }
+}
