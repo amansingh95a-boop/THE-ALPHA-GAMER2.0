@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1330">
+<title>THE ALPHA GAMER</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070d1c;--card:#0f1a33;--line:#1d2b4d;--tx:#eef2ff;--mu:#8e9bbd;--or:#ff7a1a;--am:#ffc233;--gr:#2ecc71;--rd:#ef4444;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}html,body{height:100%}
+body{background:var(--bg);color:var(--tx);font-family:Rajdhani,sans-serif;font-size:17px;display:flex;justify-content:center}
+#app{width:100%;max-width:480px;height:100%;display:flex;flex-direction:column;position:relative}
+header{padding:14px 16px;background:linear-gradient(135deg,#13264d,#0a1330);border-bottom:2px solid var(--or);display:flex;align-items:center;gap:10px;font-family:'Chakra Petch',sans-serif}
+header b{font-size:18px;letter-spacing:.5px;flex:1}header b i{color:var(--or);font-style:normal}
+.coin{background:#1a2748;border:1px solid var(--am);color:var(--am);padding:3px 12px;border-radius:20px;font-weight:700;cursor:pointer}
+.back{background:none;border:0;color:var(--tx);font-size:26px;cursor:pointer;line-height:1}
+main{flex:1;overflow-y:auto;padding:14px 14px 24px}
+nav{display:flex;background:#0a1330;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;background:none;border:0;color:var(--mu);padding:11px 0;font:600 15px 'Chakra Petch',sans-serif;cursor:pointer}
+nav button.on{color:var(--or);box-shadow:inset 0 -3px var(--or)}
+h2{font:700 19px 'Chakra Petch',sans-serif;margin:6px 0 12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat{position:relative;border:1px solid var(--line);border-radius:12px;min-height:112px;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}.cat img,.ban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cat div{position:relative;background:linear-gradient(transparent,rgba(5,9,20,.92));padding:26px 10px 8px;display:flex;justify-content:space-between;font:700 15px 'Chakra Petch',sans-serif}
+.cat span{color:var(--gr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.mc{padding:0;overflow:hidden;cursor:pointer}.mc .bd{padding:12px 14px}
+.ban{position:relative;overflow:hidden;height:150px;display:flex;align-items:flex-end}.ban .bt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font:700 22px 'Chakra Petch',sans-serif;text-shadow:0 2px 10px #000}
+.ban span{position:relative;z-index:1;background:rgba(5,9,20,.75);color:var(--am);font:700 13px 'Chakra Petch',sans-serif;padding:3px 10px;border-radius:0 8px 0 0}
+.mc h3{font:600 16px 'Chakra Petch',sans-serif}
+.mu{color:var(--mu);font-size:15px}
+.row{display:flex;justify-content:space-between;gap:8px;margin:10px 0}.row div{flex:1}.row small{display:block;color:var(--mu);font-size:12px;text-transform:uppercase}.row strong{color:var(--am);font-size:18px}
+.row.w strong{color:var(--tx)}
+.bar{height:6px;background:#1d2b4d;border-radius:4px;overflow:hidden;margin:8px 0 4px}.bar i{display:block;height:100%;background:var(--or)}
+.foot{display:flex;align-items:center;gap:10px}.foot>div{flex:1}
+.btn{background:linear-gradient(90deg,var(--or),var(--am));color:#1a0d00;border:0;border-radius:10px;padding:11px 16px;font:700 16px 'Chakra Petch',sans-serif;cursor:pointer;width:100%}
+.btn:disabled{background:#2a3658;color:var(--mu);cursor:not-allowed}.btn.red{background:var(--rd);color:#fff}.btn.ghost{background:#1a2748;color:var(--tx);border:1px solid var(--line)}
+.btn.sm{width:auto;padding:9px 18px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}.tabs button{flex:1;padding:9px 0;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--mu);font:600 15px 'Chakra Petch',sans-serif;cursor:pointer}.tabs button.on{background:var(--or);color:#1a0d00;border-color:var(--or)}
+.tile{background:#fff;color:#111;border-radius:12px;padding:16px 6px;text-align:center;font:700 15px 'Chakra Petch',sans-serif;cursor:pointer}.tile i{display:block;font-style:normal;font-size:26px;margin-bottom:4px}
+input,textarea{width:100%;background:#0a1330;border:1px solid var(--line);color:var(--tx);border-radius:9px;padding:11px;font:500 16px Rajdhani;margin:5px 0}
+.ld{display:flex;gap:12px;padding:11px 14px;background:var(--card);border-radius:10px;margin-bottom:8px;align-items:center}.ld b{min-width:28px;color:var(--or)}.ld span{flex:1;overflow-wrap:anywhere}.ld em{color:var(--am);font-style:normal;font-weight:700}
+.note{background:#2a1c0a;border:1px solid var(--or);border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.chips div{border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:#0a1330}.chips b{color:var(--am)}
+.team{display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+.team div{display:flex;gap:10px}.sl{width:38px;height:38px;border-radius:8px;border:2px solid #cfd6ea;background:#fff;color:#111;font:700 14px Rajdhani;cursor:pointer}
+.sl.bk{background:#5b6578;border-color:#5b6578;color:#9aa4b8;cursor:not-allowed}.sl.sel{background:var(--or);border-color:var(--or)}
+.sticky{position:sticky;bottom:0;padding-top:10px;background:linear-gradient(transparent,var(--bg) 30%)}
+.st{display:inline-block;padding:2px 10px;border-radius:12px;font-size:13px;font-weight:700}.st.pending{background:#4a3b0a;color:var(--am)}.st.approved,.st.completed{background:#0c3a22;color:var(--gr)}.st.rejected{background:#4a1414;color:var(--rd)}
+.toast{position:absolute;left:14px;right:14px;bottom:76px;background:#12306b;border:1px solid var(--am);padding:10px 14px;border-radius:10px;font-weight:600;z-index:30}
+.modal{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;padding:20px;z-index:20}.modal .card{width:100%;margin:0}
+.menu{display:flex;justify-content:space-between;padding:14px;background:var(--card);border-radius:10px;margin-bottom:8px;cursor:pointer}
+.big{font:700 34px 'Chakra Petch',sans-serif;color:var(--am)}
+table{width:100%;border-collapse:collapse}td,th{padding:8px 4px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--mu);font-size:13px}
+
+.ic,.bell{background:#1a2748;border:1px solid var(--line);color:var(--tx);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;position:relative;flex:none}
+.bell i{position:absolute;top:-4px;right:-4px;background:var(--rd);color:#fff;font:700 11px Rajdhani;border-radius:10px;min-width:18px;padding:1px 4px;text-align:center;display:none;font-style:normal}
+#ptr{height:0;overflow:hidden;text-align:center;color:var(--mu);font-size:14px;transition:height .15s;display:flex;align-items:center;justify-content:center}
+.tick{display:flex;align-items:center;background:#1a2748;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px}.tick>span{padding:10px 12px;background:#26345a;font-size:18px}.tw{flex:1;overflow:hidden;white-space:nowrap}.tt{display:inline-block;padding-left:100%;animation:mq 16s linear infinite}@keyframes mq{to{transform:translateX(-100%)}}
+.slr{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:14px}.slr::-webkit-scrollbar{display:none}
+.sli{flex:0 0 100%;scroll-snap-align:start;height:175px;position:relative;cursor:pointer;display:flex;align-items:flex-end}.sli img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sct{position:relative;width:100%;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(5,9,20,.92));display:flex;justify-content:space-between;align-items:center;gap:8px;font:700 16px 'Chakra Petch',sans-serif}
+.more{background:#5b3df5;padding:5px 12px;border-radius:16px;font-size:13px;white-space:nowrap}.dots{display:flex;justify-content:center;gap:6px;margin:8px 0 12px}.dots i{width:8px;height:8px;border-radius:5px;background:#2a3658;transition:.2s}.dots i.on{background:var(--or);width:22px}
+.sw{width:46px;height:26px;border-radius:14px;background:#3a4668;position:relative;flex:none}.sw::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}.sw.on{background:var(--gr)}.sw.on::after{left:23px}
+.pill{display:inline-block;background:#0c3a22;color:var(--gr);border-radius:14px;padding:3px 12px;font-weight:700;font-size:14px}
+</style></head><body>
+<div id="app"><header id="hd"></header><main id="mn"></main><nav id="nv"></nav><div id="ts"></div><div id="md"></div></div>
+<script>
+var S={user:null,cfg:{categories:[],counts:{},joined:{},online:0},tab:'home',v:null,p:{},stack:[],tick:null,slt:null,poll:null,events:[]};
+var $=function(i){return document.getElementById(i)};
+function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function api(m,p,b){return fetch(p,{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined}).then(function(r){return r.json().then(function(j){j.status=r.status;return j})}).catch(function(){return{error:'Network problem. Try again.',status:0}})}
+function toast(m){$('ts').innerHTML='<div class="toast">'+esc(m)+'</div>';setTimeout(function(){$('ts').innerHTML=''},3000)}
+function fdt(ms){return new Date(ms).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}
+function setUser(u){S.user=u}
+function coins(){return S.user?S.user.wallet.total:0}
+function catName(id){var c=S.cfg.categories.filter(function(x){return x.id===id})[0];return c?c.name:id}
+var GR=['#7a1f1f,#ff7a1a','#0f3a7a,#1fb6ff','#4b1f7a,#ff4fa3','#14532d,#9be15d','#7a4b0f,#ffc233','#1f2f7a,#7a5cff'];
+function grad(id){var h=0;for(var i=0;i<id.length;i++)h=(h*31+id.charCodeAt(i))%GR.length;return GR[h]}
+function imgUrl(t){return t.banner||(S.cfg.catImages||{})[t.category]||'/img/'+t.category+'.jpg'}
+function banHtml(t,h){return'<div class="ban" style="'+(h?'height:'+h+'px;':'')+'background:linear-gradient(135deg,'+grad(t.category)+')"><b class="bt">'+esc(t.title)+'</b><img src="'+esc(imgUrl(t))+'" alt="" onerror="this.remove()"><span>'+esc(catName(t.category))+'</span></div>'}
+function open(v,p){S.stack.push({v:S.v,p:S.p});S.v=v;S.p=p||{};go()}
+function back(){var s=S.stack.pop();if(s){S.v=s.v;S.p=s.p}else{S.v=null;S.p={}}go()}
+function head(title,bk){$('hd').innerHTML=(bk?'<button class="back" id="bk">‹</button>':'')+'<b>'+title+'</b><button class="ic" id="rf" title="Refresh">⟳</button><span class="coin" id="cn">🪙 '+coins()+'</span><span class="bell" id="bl">🔔<i id="bd"></i></span>';
+if(bk)$('bk').onclick=back;$('cn').onclick=function(){S.stack=[];S.v='wallet';S.p={};go()};$('rf').onclick=doRefresh;$('bl').onclick=function(){open('notifs')};updBell()}
+function updBell(){var b=$('bd');if(!b)return;b.style.display=NS.unread>0?'block':'none';b.textContent=NS.unread>9?'9+':NS.unread}
+function doRefresh(){toast('Refreshing…');Promise.all([refresh(),loadCfg()]).then(go)}
+function saveNav(){try{sessionStorage.setItem('ag_nav',JSON.stringify({tab:S.tab,v:S.v,p:S.p,stack:S.stack}))}catch(e){}}
+function restoreNav(){try{var n=JSON.parse(sessionStorage.getItem('ag_nav')||'null');if(n){S.tab=n.tab||'home';S.v=n.v||null;S.p=n.p||{};S.stack=n.stack||[];if(S.v==='pick'||S.v==='confirm')S.v='detail'}}catch(e){}}
+var AC=null;function unlock(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume()}catch(e){}}
+['click','touchstart'].forEach(function(ev){document.addEventListener(ev,unlock,{passive:true})});
+function beep(){try{unlock();if(!AC)return;[[880,0],[1175,.28]].forEach(function(x){var o=AC.createOscillator(),g=AC.createGain();o.connect(g);g.connect(AC.destination);o.frequency.value=x[0];g.gain.setValueAtTime(.25,AC.currentTime+x[1]);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+x[1]+.25);o.start(AC.currentTime+x[1]);o.stop(AC.currentTime+x[1]+.26)})}catch(e){}}
+function popup(t,b){$('md').innerHTML='<div class="modal"><div class="card"><h3>'+esc(t)+'</h3><p style="white-space:pre-wrap;margin:10px 0">'+esc(b)+'</p><button class="btn" id="pk">OK</button></div></div>';$('pk').onclick=function(){$('md').innerHTML=''}}
+var NS={latest:null,unread:0};function notifOn(){try{return localStorage.getItem('ag_notify')==='1'}catch(e){return false}}
+function pollNotifs(){if(!S.user)return;api('GET','/api/notifications').then(function(r){if(!r.rows)return;var prev=NS.latest;NS.unread=r.unread;NS.latest=r.latest;updBell();
+if(prev!==null&&r.latest>prev&&notifOn()){var n=r.rows[0];popup(n.title,n.body);beep();if(navigator.vibrate)navigator.vibrate([200,100,200]);try{if(window.Notification&&Notification.permission==='granted')new Notification(n.title,{body:n.body})}catch(e){}}})}
+setInterval(pollNotifs,15000);
+(function(){var m=$('mn'),y0=null,pull=0,ind=document.createElement('div');ind.id='ptr';m.parentNode.insertBefore(ind,m);
+m.addEventListener('touchstart',function(e){y0=(m.scrollTop<=0&&!$('md').innerHTML)?e.touches[0].clientY:null},{passive:true});
+m.addEventListener('touchmove',function(e){if(y0==null)return;pull=e.touches[0].clientY-y0;if(pull>0&&m.scrollTop<=0){ind.style.height=Math.min(pull/2,56)+'px';ind.textContent=pull>110?'⬆ Release to refresh':'⬇ Pull down to refresh'}},{passive:true});
+m.addEventListener('touchend',function(){if(y0==null)return;var fire=pull>110;y0=null;pull=0;ind.style.height='0';if(fire)doRefresh()},{passive:true})})();
+
+function nav(){var t=[['earn','Earn'],['lb','Leaderboard'],['home','Home'],['menu','Menu']];$('nv').innerHTML=t.map(function(x){return'<button class="'+(S.tab==x[0]&&!S.v?'on':'')+'" data-t="'+x[0]+'">'+x[1]+'</button>'}).join('');
+[].forEach.call($('nv').children,function(b){b.onclick=function(){S.tab=b.dataset.t;S.v=null;S.stack=[];go()}})}
+function go(){clearInterval(S.tick);clearInterval(S.slt);clearInterval(S.poll);$('md').innerHTML='';nav();var m=$('mn');m.scrollTop=0;saveNav();
+var f={list:vList,detail:vDetail,pick:vPick,confirm:vConfirm,mine:vMine,wallet:vWallet,recharge:vRecharge,withdraw:vWithdraw,profile:vProfile,stats:vStats,notice:vNotifs,notifs:vNotifs,care:vCare,event:vEvent,page:vPage}[S.v];
+if(f)return f(m);var t={home:vHome,lb:vLb,earn:vEarn,menu:vMenu}[S.tab];t(m)}
+function refresh(){return api('GET','/api/me').then(function(r){if(r.user)setUser(r.user)})}
+function empty(t){return'<p class="mu" style="text-align:center;padding:50px 0;font-size:18px">'+(t||'Matches Not Found!')+'</p>'}
+
+/* ---------- auth ---------- */
+function auth(mode){mode=mode||'login';S.v=null;S.user=null;$('nv').innerHTML='';$('hd').innerHTML='<b>THE <i>ALPHA</i> GAMER</b>';var reg=mode==='register';
+$('mn').innerHTML='<div class="tabs"><button data-a="login" class="'+(reg?'':'on')+'">Login</button><button data-a="register" class="'+(reg?'on':'')+'">Create account</button></div><div class="card"><input id="ae" type="email" placeholder="Gmail / email" autocomplete="email">'+(reg?'<input id="ag" placeholder="Free Fire gamer name (unique)" maxlength="20"><input id="au" placeholder="Free Fire UID (8–12 digits)" inputmode="numeric" maxlength="12"><input id="am" placeholder="10-digit Indian mobile number" inputmode="numeric" maxlength="14" autocomplete="tel">':'')+'<input id="ap" type="password" placeholder="Password" autocomplete="'+(reg?'new-password':'current-password')+'">'+(reg?'<input id="ar" placeholder="Referral code (optional)" maxlength="8" style="text-transform:uppercase"><p class="mu" style="font-size:14px">One Gmail, one mobile number, one Free Fire ID and one gamer name per account.</p>':'')+'<p class="mu" id="aerr" style="color:var(--rd);min-height:24px"></p><button class="btn" id="ago">'+(reg?'Create account':'Login')+'</button>'+(reg?'':'<p style="text-align:center;margin-top:14px"><a href="#" id="fg" style="color:var(--or)">Forgot password?</a></p>')+'</div>';
+if($('fg'))$('fg').onclick=function(e){e.preventDefault();forgot($('ae').value)};
+[].forEach.call(document.querySelectorAll('[data-a]'),function(b){b.onclick=function(){auth(b.dataset.a)}});
+$('ago').onclick=function(){var b=$('ago');b.disabled=true;var body={email:$('ae').value,password:$('ap').value};if(reg){body.gamerName=$('ag').value;body.ffUid=$('au').value;body.mobile=$('am').value;body.refCode=$('ar').value}
+api('POST',reg?'/api/register':'/api/login',body).then(function(r){b.disabled=false;if(r.user){setUser(r.user);S.tab='home';S.v=null;S.stack=[];NS.latest=null;loadCfg().then(function(){go();pollNotifs()})}else $('aerr').textContent=r.error||'Something went wrong.'})}}
+function forgot(email){S.v=null;$('nv').innerHTML='';$('hd').innerHTML='<b>Reset password</b>';
+$('mn').innerHTML='<div class="card"><p class="mu">Enter your Gmail. We will send a 6-digit OTP to it.</p><input id="fe" type="email" placeholder="Gmail / email" value="'+esc(email||'')+'" autocomplete="email"><button class="btn" id="fs">Send OTP</button></div><div class="card" id="fb" style="display:none"><input id="fo" inputmode="numeric" maxlength="6" placeholder="6-digit OTP"><input id="fp" type="password" placeholder="New password (8+ characters)" autocomplete="new-password"><p class="mu" id="fm" style="color:var(--rd);min-height:22px"></p><button class="btn" id="fr">Change password</button></div><p style="text-align:center"><a href="#" id="bl" style="color:var(--or)">Back to login</a></p>';
+$('bl').onclick=function(e){e.preventDefault();auth()};
+$('fs').onclick=function(){var b=$('fs');b.disabled=true;api('POST','/api/forgot',{email:$('fe').value}).then(function(r){b.disabled=false;toast(r.message||r.error);if(r.ok)$('fb').style.display='block'})};
+$('fr').onclick=function(){api('POST','/api/reset',{email:$('fe').value,otp:$('fo').value,password:$('fp').value}).then(function(r){if(r.ok){toast('Password changed. Please login.');auth()}else $('fm').textContent=r.error})}}
+function loadCfg(){return api('GET','/api/config').then(function(c){if(c.categories)S.cfg=c})}
+
+/* ---------- home ---------- */
+function slideHtml(ev){return ev.length?'<div class="slr" id="sl">'+ev.map(function(e,i){return'<div class="sli" data-ev="'+i+'" style="background:linear-gradient(135deg,'+grad('ev'+e.id)+')">'+(e.image?'<img src="'+esc(e.image)+'" alt="" onerror="this.remove()">':'')+'<div class="sct"><span>'+esc(e.title)+'</span><span class="more">More details</span></div></div>'}).join('')+'</div><div class="dots" id="dots">'+ev.map(function(e,i){return'<i></i>'}).join('')+'</div>':''}
+function bindSlider(){var sl=$('sl');if(!sl)return;var n=S.events.length,idx=0,dots=[].slice.call(document.querySelectorAll('#dots i')),held=false;
+var mark=function(){idx=Math.round(sl.scrollLeft/sl.clientWidth);dots.forEach(function(d,i){d.className=i===idx?'on':''})};mark();sl.addEventListener('scroll',mark);
+sl.addEventListener('touchstart',function(){held=true},{passive:true});sl.addEventListener('touchend',function(){setTimeout(function(){held=false},4000)},{passive:true});
+S.slt=setInterval(function(){if(!$('sl')||held||n<2)return;idx=(idx+1)%n;sl.scrollTo({left:idx*sl.clientWidth,behavior:'smooth'})},3500);
+[].forEach.call(sl.querySelectorAll('[data-ev]'),function(el){el.onclick=function(){var e=S.events[+el.dataset.ev];if(e.link)window.open(e.link,'_blank','noopener');else open('event',{i:+el.dataset.ev})}})}
+function vHome(m){head('👤 '+esc(S.user.gamerName));
+m.innerHTML=(S.cfg.notice?'<div class="tick"><span>📢</span><div class="tw"><div class="tt">'+esc(S.cfg.notice)+'</div></div></div>':'')+'<div id="slot"></div><p style="text-align:center;margin:0 0 6px"><span class="pill">🟢 '+(S.cfg.online||0)+' player'+((S.cfg.online||0)===1?'':'s')+' online now</span></p><h2>My Matches</h2><div class="grid" style="grid-template-columns:1fr 1fr 1fr"><div class="tile" data-s="ongoing"><i>🔄</i>Ongoing</div><div class="tile" data-s="upcoming"><i>📅</i>Upcoming</div><div class="tile" data-s="completed"><i>✅</i>Completed</div></div><h2 style="margin-top:18px">Esports Games <span class="mu" style="font-size:13px;font-weight:500">● players joined</span></h2><div class="grid">'+
+S.cfg.categories.map(function(c){return'<div class="cat" data-c="'+c.id+'" style="background:linear-gradient(135deg,'+grad(c.id)+')"><img src="'+esc((S.cfg.catImages||{})[c.id]||'/img/'+c.id+'.jpg')+'" alt="" onerror="this.remove()"><div>'+esc(c.name)+'<span>● '+((S.cfg.joined||{})[c.id]||0)+'</span></div></div>'}).join('')+'</div>';
+[].forEach.call(m.querySelectorAll('[data-s]'),function(b){b.onclick=function(){open('mine',{state:b.dataset.s})}});
+[].forEach.call(m.querySelectorAll('[data-c]'),function(b){b.onclick=function(){open('list',{cat:b.dataset.c,state:'upcoming'})}});
+api('GET','/api/events').then(function(r){S.events=r.events||[];if($('slot')){$('slot').innerHTML=slideHtml(S.events);bindSlider()}});
+var key=S.cfg.notice||'';try{if(key&&localStorage.getItem('ag_seen_notice')!==key){localStorage.setItem('ag_seen_notice',key);setTimeout(function(){if(!S.v&&S.tab==='home'){popup('📢 Announcement',key);beep()}},600)}}catch(e){}}
+function vEvent(m){head('Event',true);var e=S.events[S.p.i];if(!e){back();return}
+m.innerHTML='<div class="card mc"><div class="ban" style="height:190px;background:linear-gradient(135deg,'+grad('ev'+e.id)+')">'+(e.image?'<img src="'+esc(e.image)+'" alt="" onerror="this.remove()">':'')+'</div><div class="bd"><h2 style="margin:0 0 8px;color:var(--am)">'+esc(e.title)+'</h2><p style="white-space:pre-wrap">'+esc(e.description||'')+'</p>'+(e.link?'<a class="btn" style="display:block;text-decoration:none;text-align:center;margin-top:12px" href="'+esc(e.link)+'" target="_blank" rel="noopener">Open link</a>':'')+'</div></div>'}
+
+/* ---------- match cards ---------- */
+function cardHtml(t){var left=t.totalSlots-t.booked,full=left<=0,pc=Math.round(t.booked/t.totalSlots*100);var lbl=t.state==='completed'?(t.status==='cancelled'?'Cancelled':'Completed'):t.joined?'Joined ✓':t.state==='ongoing'?'Live':full?'Joining Full':'Join';
+var can=t.state==='upcoming'&&!full&&!t.joined;
+return'<div class="card mc" data-m="'+t.id+'">'+banHtml(t)+'<div class="bd"><h3>'+esc(t.title)+' #'+t.id+'</h3><div class="mu">'+fdt(t.startsAt)+'</div><div class="row"><div><small>Prize pool</small><strong>🪙 '+t.prizePool+'</strong></div><div><small>Per kill</small><strong>🪙 '+t.perKill+'</strong></div><div><small>Entry fee</small><strong>'+(t.entryFee?'🪙 '+t.entryFee:'FREE')+'</strong></div></div><div class="row w"><div><small>Type</small><strong>'+esc(t.mode)+'</strong></div><div><small>Map</small><strong>'+esc(t.map)+'</strong></div></div><div class="foot"><div><div class="bar"><i style="width:'+pc+'%"></i></div><div class="mu">'+(full?'Joining full':'Only '+left+' spot'+(left>1?'s':'')+' left')+' · '+t.booked+'/'+t.totalSlots+'</div></div><button class="btn sm" data-j="'+t.id+'" '+(can?'':'disabled style="opacity:.8"')+'>'+lbl+'</button></div></div></div>'}
+function bindCards(m){[].forEach.call(m.querySelectorAll('[data-m]'),function(c){c.onclick=function(){open('detail',{id:c.dataset.m})}});
+[].forEach.call(m.querySelectorAll('[data-j]'),function(b){b.onclick=function(e){e.stopPropagation();if(!b.disabled)open('pick',{id:b.dataset.j})}})}
+function tabsHtml(cur,keys,names){return'<div class="tabs">'+keys.map(function(k,i){return'<button data-s="'+k+'" class="'+(cur===k?'on':'')+'">'+names[i]+'</button>'}).join('')+'</div>'}
+function vList(m){head(esc(catName(S.p.cat))+' Contests',true);var st=S.p.state||'upcoming';
+api('GET','/api/tournaments?cat='+S.p.cat+'&state='+st).then(function(r){if(!r.tournaments)return toast(r.error);m.innerHTML=tabsHtml(st,['ongoing','upcoming','completed'],['Ongoing','Upcoming','Resulted'])+(r.tournaments.length?r.tournaments.map(cardHtml).join(''):empty());
+[].forEach.call(m.querySelectorAll('[data-s]'),function(b){b.onclick=function(){S.p.state=b.dataset.s;go()}});bindCards(m)})}
+function vMine(m){head('My Matches',true);var st=S.p.state||'upcoming';
+api('GET','/api/my-matches?state='+st).then(function(r){if(!r.tournaments)return toast(r.error);m.innerHTML=tabsHtml(st,['ongoing','upcoming','completed'],['Ongoing','Upcoming','Completed'])+(r.tournaments.length?r.tournaments.map(cardHtml).join(''):empty());
+[].forEach.call(m.querySelectorAll('[data-s]'),function(b){b.onclick=function(){S.p.state=b.dataset.s;go()}});bindCards(m)})}
+
+/* ---------- match detail ---------- */
+function left(ms){var s=Math.max(0,Math.floor(ms/1000));return Math.floor(s/86400)+'d '+Math.floor(s%86400/3600)+'h '+Math.floor(s%3600/60)+'m '+s%60+'s'}
+function vDetail(m){head('Contest #'+S.p.id,true);
+api('GET','/api/tournaments/'+S.p.id).then(function(r){if(!r.tournament){toast(r.error);return back()}var t=r.tournament,full=t.booked>=t.totalSlots;
+var btn=t.state==='completed'?(t.status==='cancelled'?'Match cancelled':'Match completed'):t.joined?'Joined ✓':t.state==='ongoing'?'Match started':full?'Joining Full':'Join · '+(t.entryFee?'🪙 '+t.entryFee+(t.teamSize>1?' per player':''):'FREE');
+var can=t.state==='upcoming'&&!full&&!t.joined;
+var room=t.joined&&t.state!=='completed'?(t.room?'<div class="card" style="border-color:var(--gr)"><h3>Room details</h3><h2 style="margin:6px 0">ID: '+esc(t.room.id)+'</h2><h2 style="margin:0">Password: '+esc(t.room.pass)+'</h2></div>':'<div class="note">Room ID and password show here at '+fdt(t.roomOpensAt)+' (before the match starts).</div>'):'';
+m.innerHTML='<div class="card mc">'+banHtml(t,170)+'</div>'+
+(t.state==='upcoming'?'<div class="card" style="text-align:center">Time left: <b id="cd"></b></div>':'')+room+
+'<h2 style="color:var(--am)">'+esc(t.title)+' #'+t.id+'</h2><div class="chips"><div>Team: <b>'+esc(t.mode)+'</b></div><div>Map: <b>'+esc(t.map)+'</b></div><div>Match type: <b>'+(t.entryFee?'Paid':'Free')+'</b></div><div>Entry fee: <b>🪙 '+t.entryFee+'</b></div><div>Schedule: <b>'+fdt(t.startsAt)+'</b></div></div>'+
+'<h2>Prize Details</h2><div class="card"><div style="white-space:pre-wrap">'+esc(t.prizeText||'—')+'</div>'+(t.perKill?'<div class="mu" style="margin-top:6px">Per kill: 🪙 '+t.perKill+'</div>':'')+'<div class="mu">Total prize pool: 🪙 '+t.prizePool+'</div></div>'+
+(r.results.length?'<h2>Results</h2><div class="card"><table><tr><th>Player</th><th>Kills</th><th>Won</th></tr>'+r.results.map(function(x){return'<tr><td>'+esc(x.name)+'</td><td>'+x.kills+'</td><td>🪙 '+x.total+'</td></tr>'}).join('')+'</table></div>':'')+
+'<h2>About this Match</h2><div class="card" style="white-space:pre-wrap">'+esc(t.rules||'Follow fair play. Record your gameplay.')+'</div>'+
+'<button class="btn ghost" id="vj" style="margin-bottom:10px">View all joinings ('+t.booked+')</button><div id="pl"></div><div class="sticky"><button class="btn" id="jb" '+(can?'':'disabled')+'>'+btn+'</button></div>';
+if(t.state==='upcoming'){var upd=function(){var e=$('cd');if(e)e.textContent=left(t.startsAt-Date.now())};upd();S.tick=setInterval(upd,1000)}
+$('vj').onclick=function(){$('pl').innerHTML=r.players.length?'<div class="card">'+r.players.map(function(p){return'<div class="mu">Position '+p.slot+' — <b style="color:var(--tx)">'+esc(p.name)+'</b></div>'}).join('')+'</div>':'<p class="mu">No players have joined yet.</p>'};
+$('jb').onclick=function(){if(can)open('pick',{id:t.id})};
+if(t.joined&&t.state==='upcoming'&&!t.room)S.poll=setInterval(function(){api('GET','/api/tournaments/'+t.id).then(function(x){if(x.tournament&&x.tournament.room&&S.v==='detail')go()})},12000)})}
+
+/* ---------- join flow (reference: pick position -> add info -> join) ---------- */
+function vPick(m){head('Joining Match',true);
+api('GET','/api/tournaments/'+S.p.id).then(function(r){if(!r.tournament)return back();var t=r.tournament,ts=t.teamSize;S.t=t;S.taken=r.taken;S.sel=[];S.cnt=1;
+function freeIn(tm){var n=0;for(var k=1;k<=ts;k++)if(S.taken.indexOf((tm-1)*ts+k)<0)n++;return n}
+function auto(tm){S.sel=[];for(var k=1;k<=ts&&S.sel.length<S.cnt;k++){var q=(tm-1)*ts+k;if(S.taken.indexOf(q)<0)S.sel.push(q)}}
+function draw(){var chips='';if(ts>1)chips='<div class="card"><b>Who is playing?</b><div class="tabs" style="margin:8px 0 6px">'+Array.apply(null,Array(ts)).map(function(_,i){var c=i+1;return'<button data-c="'+c+'" class="'+(S.cnt===c?'on':'')+'">'+(c===1?'Just me':'Me + '+(c-1)+(c>2?' friends':' friend'))+'</button>'}).join('')+'</div><div class="mu">'+(S.cnt===1?'Only your seat is booked (🪙 '+t.entryFee+'). Another player can take the other seat(s) in the team.':'You pay for all '+S.cnt+' players: '+S.cnt+' × 🪙 '+t.entryFee+' = 🪙 '+S.cnt*t.entryFee+'. Next you add each friend\'s in-game name and UID.')+' Tap a team name to auto-pick seats.</div></div>';
+var rows='';for(var i=1;i<=t.totalSlots/ts;i++){var bx='';for(var k=1;k<=ts;k++){var q=(i-1)*ts+k,bk=S.taken.indexOf(q)>-1;bx+='<button class="sl '+(bk?'bk':S.sel.indexOf(q)>-1?'sel':'')+'" data-n="'+q+'" '+(bk?'disabled':'')+'>'+k+'</button>'}
+rows+='<div class="team" '+(freeIn(i)>=S.cnt?'':'style="opacity:.55"')+'><span data-t="'+i+'" style="cursor:pointer">Team '+i+' <span class="mu" style="font-size:13px">('+freeIn(i)+' free)</span></span><div>'+bx+'</div></div>'}
+m.innerHTML='<div class="card" style="background:linear-gradient(90deg,#0e9bbf,#1fd0ee);color:#fff;text-align:center"><b>Select Match Position</b></div>'+chips+rows+'<div class="sticky"><button class="btn" id="jn">Continue ('+S.sel.length+'/'+S.cnt+' selected)</button></div>';
+[].forEach.call(m.querySelectorAll('[data-c]'),function(b){b.onclick=function(){S.cnt=+b.dataset.c;S.sel=S.sel.slice(0,S.cnt);draw()}});
+[].forEach.call(m.querySelectorAll('[data-t]'),function(b){b.onclick=function(){auto(+b.dataset.t);draw()}});
+[].forEach.call(m.querySelectorAll('[data-n]'),function(b){b.onclick=function(){var n=+b.dataset.n,i=S.sel.indexOf(n);if(i>-1)S.sel.splice(i,1);else{if(S.sel.length&&Math.ceil(S.sel[0]/ts)!==Math.ceil(n/ts))S.sel=[];if(S.sel.length>=S.cnt)S.sel.shift();S.sel.push(n)}draw()}});
+$('jn').onclick=function(){if(S.sel.length!==S.cnt)return toast('Select '+S.cnt+' seat'+(S.cnt>1?'s':'')+' in one team');S.sel.sort(function(a,b){return a-b});S.rows=S.sel.map(function(q,i){return{slot:q,name:i===0&&S.user?S.user.gamerName:'',uid:i===0&&S.user?S.user.ffUid:''}});open('confirm',{id:t.id})}}
+draw()})}
+function vConfirm(m){head('Joining Match',true);var t=S.t,ts=t.teamSize,total=t.entryFee*S.rows.length,short=coins()<total;
+function draw(){var ready=S.rows.every(function(r){return r.name&&r.uid});
+m.innerHTML='<div class="card"><div class="mu">Your current balance: <b style="color:var(--am)">🪙 '+coins()+'</b></div><div class="mu">Entry fee per person: <b style="color:var(--am)">🪙 '+t.entryFee+'</b></div><div class="mu">Total payable: <b style="color:var(--am)">🪙 '+total+'</b></div>'+(S.rows.length>1?'<div class="mu">For '+S.rows.length+' players (you + '+(S.rows.length-1)+' friend'+(S.rows.length>2?'s':'')+'): '+S.rows.length+' × 🪙 '+t.entryFee+'</div>':'')+'</div>'+
+'<div class="card"><h3 style="text-align:center;margin-bottom:8px">Selected Position</h3><table><tr><th>Team</th><th>Position</th><th>InGameName</th></tr>'+S.rows.map(function(r,i){return'<tr><td>Team '+Math.ceil(r.slot/ts)+'</td><td>'+(((r.slot-1)%ts)+1)+'</td><td>'+(r.name?esc(r.name)+'<div class="mu" style="font-size:13px">ID '+esc(r.uid)+'</div> <a href="#" data-e="'+i+'" style="color:var(--or)">edit</a>':'<button class="btn sm" data-e="'+i+'">'+(i?"Add friend\'s info":"Add info")+'</button>')+'</td></tr>'}).join('')+'</table></div>'+
+(short?'<div class="note">Not enough coins. Add money to join.</div><button class="btn" id="am" style="margin-bottom:10px">Add money</button>':'')+
+'<div class="grid"><button class="btn red" id="cx">Cancel</button><button class="btn" id="jg" '+(ready&&!short?'':'disabled')+'>Join</button></div><p class="mu" style="margin-top:14px">Note: enter each player\'s real in-game name and ID. Wrong details can lead to disqualification.</p>';
+[].forEach.call(m.querySelectorAll('[data-e]'),function(b){b.onclick=function(e){e.preventDefault();edit(+b.dataset.e)}});$('cx').onclick=back;if($('am'))$('am').onclick=function(){S.stack=[];S.v='recharge';S.p={};go()};
+$('jg').onclick=function(){var b=$('jg');b.disabled=true;api('POST','/api/tournaments/'+t.id+'/join',{slots:S.rows.map(function(r){return{slot:r.slot,name:r.name,uid:r.uid}})}).then(function(r){if(r.ok){toast('Joined successfully!');refresh().then(function(){S.stack=[];S.v='detail';S.p={id:t.id};go()})}else{b.disabled=false;toast(r.error||'Could not join')}})}}
+function edit(i){var r=S.rows[i];$('md').innerHTML='<div class="modal"><div class="card"><h3 style="background:#1d8fe0;padding:10px;text-align:center;border-radius:8px">'+(i?"Friend\'s Game Details":"Player Game Details")+'</h3><p class="mu" style="margin-top:10px">inGameName</p><input id="mn1" value="'+esc(r.name)+'" maxlength="24"><p class="mu">inGameId (UID)</p><input id="mu1" value="'+esc(r.uid)+'" inputmode="numeric" maxlength="12"><p class="mu">Make sure you entered the correct name and ID.</p><div class="grid"><button class="btn red" id="mc1">Cancel</button><button class="btn" id="ms1">Save</button></div></div></div>';
+$('mc1').onclick=function(){$('md').innerHTML=''};$('ms1').onclick=function(){var n=$('mn1').value.trim(),u=$('mu1').value.trim();if(n.length<2)return toast('Enter in-game name');if(!/^\d{8,12}$/.test(u))return toast('ID must be 8–12 digits');S.rows[i].name=n;S.rows[i].uid=u;$('md').innerHTML='';draw()}}
+draw()}
+
+/* ---------- wallet ---------- */
+function vWallet(m){head('Wallet',true);Promise.all([refresh(),api('GET','/api/wallet')]).then(function(a){var w=a[1];head('Wallet',true);
+m.innerHTML='<div class="card" style="text-align:center"><div class="mu">Total balance</div><div class="big">'+coins()+'</div><div class="mu">Deposit: '+S.user.wallet.deposit+' · Winning: '+S.user.wallet.winning+'</div></div><button class="btn" id="ad" style="margin-bottom:10px">Buy more / Add money</button><button class="btn red" id="wt">Withdraw</button><h2 style="margin-top:20px;text-align:center">Wallet history</h2>'+
+((w.history||[]).length?w.history.map(function(t){return'<div class="card" style="text-align:center"><b style="color:'+(t.kind==='credit'?'var(--gr)':'var(--rd)')+'">'+t.kind+'</b> · '+t.wallet+' wallet · '+(t.kind==='credit'?'+':'−')+t.amount+' · bal '+t.balance_after+'<div class="mu">'+esc(t.reason)+(t.note?' — '+esc(t.note):'')+'</div><div class="mu">'+fdt(new Date(t.created_at.replace(' ','T')+'Z').getTime())+'</div></div>'}).join(''):empty('No transactions yet.'));
+$('ad').onclick=function(){open('recharge')};$('wt').onclick=function(){open('withdraw')}})}
+function vRecharge(m){head('Recharge',true);Promise.all([api('GET','/api/deposits'),loadCfg()]).then(function(z){var h=z[0];
+function amountStep(){m.innerHTML='<div class="card"><div class="mu">Total balance</div><div class="big">'+coins()+'</div></div><div class="card"><b>Amount</b><input id="am" inputmode="numeric" placeholder="₹ 10 ~ 10000"><div class="grid" style="grid-template-columns:1fr 1fr 1fr;margin:8px 0">'+[20,50,100,200,500,1000].map(function(a){return'<button class="btn ghost" data-a="'+a+'">₹'+a+'</button>'}).join('')+'</div><button class="btn" id="go">Recharge</button></div><h2>Deposit history</h2>'+histHtml();
+[].forEach.call(m.querySelectorAll('[data-a]'),function(b){b.onclick=function(){$('am').value=b.dataset.a}});$('go').onclick=function(){var a=+$('am').value;if(!(a>=10&&a<=10000))return toast('Amount must be 10 to 10000');if(!S.cfg.upiId&&!S.cfg.qrImage)return toast('Payments are not set up yet.');payStep(a)}}
+function histHtml(){return(h.rows||[]).length?h.rows.map(function(d){return'<div class="ld"><span>#'+d.id+' · ₹'+d.amount+'<div class="mu">UTR '+esc(d.utr)+'</div></span><span class="st '+d.status+'">'+d.status+'</span></div>'}).join(''):'<p class="mu">No deposits yet.</p>'}
+function payStep(a){var link='upi://pay?pa='+encodeURIComponent(S.cfg.upiId||'')+'&pn='+encodeURIComponent(S.cfg.upiName)+'&am='+a+'&cu=INR&tn='+encodeURIComponent('ALPHA GAMER '+S.user.id);
+m.innerHTML='<div class="card" style="text-align:center"><div class="mu">Pay exactly</div><div class="big">₹'+a+'</div><div class="mu">to '+esc(S.cfg.upiName)+'</div>'+(S.cfg.qrImage?'<div class="mu" style="margin-top:10px">Scan this QR with any UPI app</div><img src="'+esc(S.cfg.qrImage)+'" alt="Payment QR" style="width:250px;max-width:78%;background:#fff;padding:8px;border-radius:12px;margin:8px auto 12px;display:block">':'')+(S.cfg.upiId?'<div style="margin:10px 0">UPI ID: <b style="color:var(--am)">'+esc(S.cfg.upiId)+'</b></div><a href="'+esc(link)+'" class="btn" style="display:block;text-decoration:none;margin-bottom:8px">Pay with UPI app</a><button class="btn ghost" id="cp">Copy UPI ID</button>':'')+'</div>'+
+'<div class="card"><h3>After paying</h3><p class="mu">Enter the 12-digit UTR / reference number from your payment app. Coins are added after we verify the payment.</p><input id="ut" inputmode="numeric" maxlength="12" placeholder="12-digit UTR number"><button class="btn" id="sb">Submit payment</button></div>';
+if($('cp'))$('cp').onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(S.cfg.upiId);toast('UPI ID copied')};
+$('sb').onclick=function(){var b=$('sb');b.disabled=true;api('POST','/api/deposits',{amount:a,utr:$('ut').value}).then(function(r){b.disabled=false;if(r.ok){toast('Request sent. Coins come after verification.');go()}else toast(r.error)})}}
+amountStep()})}
+function vWithdraw(m){head('Withdraw',true);api('GET','/api/withdrawals').then(function(h){
+m.innerHTML='<div class="card"><div class="mu">Winning balance (withdrawable)</div><div class="big">'+S.user.wallet.winning+'</div><div class="mu">Minimum withdrawal: '+S.cfg.minWithdraw+'</div><input id="wa" inputmode="numeric" placeholder="Amount"><input id="wu" placeholder="Your UPI ID (name@bank)"><button class="btn red" id="wb">Request withdrawal</button></div><h2>History</h2>'+
+((h.rows||[]).length?h.rows.map(function(d){return'<div class="ld"><span>#'+d.id+' · '+d.amount+' → '+esc(d.upi)+(d.payout_ref?'<div class="mu">Ref '+esc(d.payout_ref)+'</div>':'')+'</span><span class="st '+d.status+'">'+d.status+'</span></div>'}).join(''):'<p class="mu">No withdrawals yet.</p>');
+$('wb').onclick=function(){var b=$('wb');b.disabled=true;api('POST','/api/withdrawals',{amount:+$('wa').value,upi:$('wu').value}).then(function(r){b.disabled=false;if(r.ok){toast('Withdrawal requested');refresh().then(go)}else toast(r.error)})}})}
+
+/* ---------- leaderboard / earn / menu ---------- */
+function vLb(m){head('Leaderboard');var p=S.lbp||'weekly';
+m.innerHTML=tabsHtml(p,['weekly','monthly','yearly','all'],['Weekly','Monthly','Yearly','Fulltime'])+'<p class="mu" style="margin-bottom:8px">Updates automatically from verified match results.</p><div id="lbr"><p class="mu">Loading…</p></div>';
+[].forEach.call(m.querySelectorAll('[data-s]'),function(b){b.onclick=function(){S.lbp=b.dataset.s;go()}});
+function load(){api('GET','/api/leaderboard?period='+p).then(function(r){if(!$('lbr'))return;$('lbr').innerHTML=(r.rows||[]).length?r.rows.map(function(x,i){return'<div class="ld"><b>'+(i<3?['🥇','🥈','🥉'][i]:i+1)+'</b><span>'+esc(x.name)+'<div class="mu" style="font-size:13px">'+x.matches+' matches · '+x.kills+' kills · withdrawn 🪙 '+x.withdrawn+'</div></span><em>🪙 '+x.won+'</em></div>'}).join(''):empty('No results yet. Winners appear after matches finish.')})}
+load();S.tick=setInterval(load,30000)}
+function vEarn(m){head('Earn coins');refresh().then(function(){m.innerHTML='<div class="card"><h3>Your referral code</h3><div class="big" style="letter-spacing:3px;margin:8px 0">'+esc(S.user.refCode)+'</div><div class="mu">Friends joined with your code: '+S.user.referrals+'</div><p class="mu" style="margin:8px 0">'+(S.cfg.referral?'When a friend you invite makes their first deposit of ₹'+S.cfg.referral.minDeposit+' or more, you get 🪙 '+S.cfg.referral.reward+' automatically. This works once per friend.':'')+'</p><button class="btn" id="cp">Copy code</button> </div>';
+$('cp').onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(S.user.refCode);toast('Code copied')}})}
+function vMenu(m){head('Menu');api('GET','/api/stats').then(function(s){
+var items=[['My Profile','profile','👤'],['My Wallet','wallet','👛'],['My Statistics','stats','📊'],['Top Players','top','🏆'],['Notifications','notifs','🔔'],['Contact Us','care','🎧'],['TOGGLE'],['FAQ','page:faq','❓'],['About Us','page:about','ℹ️'],['Privacy Policy','page:privacy','🔒'],['Terms & Conditions','page:terms','🛡️'],['Logout','out','⏻']];
+m.innerHTML='<div class="card" style="text-align:center"><h2 style="color:var(--am);margin:0 0 4px">'+esc(S.user.gamerName)+'</h2><div class="mu">UID '+esc(S.user.ffUid)+(S.user.mobile?' · 📱 '+esc(S.user.mobile):'')+'</div><div class="row"><div><small>Matches</small><strong>'+(s.matches||0)+'</strong></div><div><small>Won</small><strong>'+(s.won||0)+'</strong></div><div><small>Kills</small><strong>'+(s.kills||0)+'</strong></div><div><small>Earning</small><strong>🪙 '+(s.earnings||0)+'</strong></div></div></div>'+
+items.map(function(x){return x[0]==='TOGGLE'?'<div class="menu" id="tg"><span>🔔 Important Notice <span class="mu" style="font-size:13px">(alert + sound for room ID/password)</span></span><span class="sw '+(notifOn()?'on':'')+'"></span></div>':'<div class="menu" data-x="'+x[1]+'"><span>'+x[2]+' '+x[0]+'</span><span class="mu">›</span></div>'}).join('');
+$('tg').onclick=function(){var on=!notifOn();try{localStorage.setItem('ag_notify',on?'1':'0')}catch(e){}unlock();if(on){beep();try{if(window.Notification&&Notification.permission==='default')Notification.requestPermission()}catch(e){}toast('Important Notice ON: room ID/password will pop up instantly')}else toast('Important Notice OFF');go()};
+[].forEach.call(m.querySelectorAll('[data-x]'),function(b){b.onclick=function(){var x=b.dataset.x;if(x==='out')api('POST','/api/logout').then(function(){try{sessionStorage.removeItem('ag_nav')}catch(e){}S.user=null;S.stack=[];S.tab='home';S.v=null;auth()});else if(x==='top'){S.lbp='all';S.tab='lb';S.v=null;go()}else if(x.indexOf('page:')===0)open('page',{k:x.slice(5)});else open(x)}})})}
+function vStats(m){head('My Statistics',true);api('GET','/api/stats').then(function(s){m.innerHTML='<div class="grid">'+[['Matches played',s.matches],['Matches won',s.won],['Total kills',s.kills],['Total earning','🪙 '+s.earnings],['Withdrawn','🪙 '+s.withdrawn],['Balance','🪙 '+coins()]].map(function(x){return'<div class="card" style="text-align:center;margin:0"><div class="mu">'+x[0]+'</div><div class="big" style="font-size:26px">'+x[1]+'</div></div>'}).join('')+'</div>'})}
+function vCare(m){head('Customer Care',true);loadCfg().then(function(){var c=S.cfg,num=(c.whatsapp||'').replace(/\D/g,''),btn=function(h,t,col){return'<a class="btn" style="display:block;text-decoration:none;margin-top:10px;background:'+col+';color:#fff" href="'+esc(h)+'" target="_blank" rel="noopener">'+t+'</a>'};
+m.innerHTML='<div class="card" style="text-align:center"><div style="font-size:44px">🎧</div><h3>Customer Care</h3><p class="mu" style="margin:8px 0">Payment, withdrawal or match problem? Contact us. Raise match issues within 2 hours of match end.</p>'+
+(num?btn('https://wa.me/'+num+'?text='+encodeURIComponent('Hello THE ALPHA GAMER support. My gamer name: '+S.user.gamerName),'💬 WhatsApp · '+esc(c.whatsapp),'#1fa855'):'')+(c.telegramUrl?btn(c.telegramUrl,'✈️ Join Telegram','#229ed9'):'')+(c.instagramUrl?btn(c.instagramUrl,'📸 Follow Instagram','#c13584'):'')+'</div>'})}
+function vPage(m){var T={faq:'FAQ',about:'About Us',privacy:'Privacy Policy',terms:'Terms & Conditions'};head(T[S.p.k]||'Info',true);api('GET','/api/pages').then(function(r){m.innerHTML='<div class="card" style="white-space:pre-wrap">'+esc(r[S.p.k]||'')+'</div>'})}
+function vNotifs(m){head('Notifications',true);api('GET','/api/notifications').then(function(r){var rows=r.rows||[];m.innerHTML=(S.cfg.notice?'<div class="note">📢 '+esc(S.cfg.notice)+'</div>':'')+(rows.length?rows.map(function(n){return'<div class="card" style="'+(n.kind==='room'?'border-color:var(--gr)':'')+'"><b>'+esc(n.title)+'</b><div style="white-space:pre-wrap;margin:6px 0">'+esc(n.body)+'</div><div class="mu" style="font-size:13px">'+fdt(n.created_at)+'</div></div>'}).join(''):empty('No notifications yet.'));
+api('POST','/api/notifications/seen',{}).then(function(){NS.unread=0;updBell()})})}
+function vProfile(m){head('My Profile',true);
+m.innerHTML='<div class="card"><small class="mu">Email</small><div>'+esc(S.user.email)+'</div><small class="mu">Mobile number</small>'+(S.user.mobile?'<div>📱 '+esc(S.user.mobile)+' <span class="mu" style="font-size:13px">(cannot be changed)</span></div>':'<input id="pm" placeholder="10-digit mobile number" inputmode="numeric" maxlength="14">')+'</div><div class="card"><small class="mu">Gamer name</small><input id="pg" value="'+esc(S.user.gamerName)+'" maxlength="20"><small class="mu">Free Fire UID</small><input id="pu" value="'+esc(S.user.ffUid)+'" inputmode="numeric" maxlength="12"><button class="btn" id="sv">Save changes</button></div><div class="card"><h3>Change password</h3><input id="p1" type="password" placeholder="Current password" autocomplete="current-password"><input id="p2" type="password" placeholder="New password (8+ characters)" autocomplete="new-password"><button class="btn ghost" id="pw">Update password</button></div>';
+$('sv').onclick=function(){var b={gamerName:$('pg').value,ffUid:$('pu').value};if($('pm'))b.mobile=$('pm').value;api('PUT','/api/profile',b).then(function(r){if(r.user){setUser(r.user);toast('Profile saved');go()}else toast(r.error)})};
+$('pw').onclick=function(){api('POST','/api/password',{current:$('p1').value,next:$('p2').value}).then(function(r){toast(r.ok?'Password updated':r.error);if(r.ok){$('p1').value='';$('p2').value=''}})}}
+
+loadCfg().then(function(){api('GET','/api/me').then(function(r){if(r.user){setUser(r.user);restoreNav();go();pollNotifs()}else auth()})});
+</script></body></html>
